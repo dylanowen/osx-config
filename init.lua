@@ -21,7 +21,7 @@ end
 -- ║╚═╝║║─║║║║║║║║║║─║║
 -- ║╔═╗║╚═╝╠╝╚╝╠╣╠╣╚═╝║
 -- ╚╝─╚╩═══╩═══╩══╩═══╝
-audioOutputPriority = {}
+local audioOutputPriority = {}
 audioOutputPriority["Bluetooth"] = 0
 audioOutputPriority["USB"] = 1
 audioOutputPriority["Built-in"] = 2
@@ -57,7 +57,7 @@ function audioWatcherCallback(data)
       if nil ~= outputDevice and outputDevice:transportType() == "DisplayPort" then
          hs.alert.show("Blocking DisplayPort Audio Output")
 
-         allOutputDevices = hs.audiodevice.allOutputDevices()
+         local allOutputDevices = hs.audiodevice.allOutputDevices()
 
          -- try to set our output device to the last valid one
          if not hs.fnutils.contains(allOutputDevices, lastValidAudioOutputDevice) or not lastValidAudioOutputDevice:setDefaultOutputDevice() then
@@ -116,6 +116,54 @@ hs.application.watcher.new(applicationWatcher):start()
 
 
 
+local log = hs.logger.new('uplift', 'info')
+
+function nextThirty()
+   local hour = tonumber(os.date("*t").hour)
+   local min = tonumber(os.date("*t").min)
+   if 30 <= min then
+      if 23 == hour then
+         return "00:00"
+      else
+         return (hour + 1) .. ":00"
+      end
+   else
+      return hour .. ":30"
+   end
+end
+
+function toggleDesk()
+   -- schedule the next move
+   hs.timer.doAt(nextThirty(), 0, toggleDesk)
+
+   -- check if we can query our desk, otherwise assume it's not nearby
+   local _, deskAvailable, _, _ = hs.execute("uplift --timeout 5 query", true)
+   if deskAvailable then
+      log.i("Asking to toggle desk")
+      hs.notify.new(function (notification)
+         -- check that the user actually clicked Yes
+         if hs.notify.activationTypes[notification:activationType()] == "actionButtonClicked" then
+            hs.alert.show("Toggling Desk")
+            hs.execute("uplift toggle", true)
+         else
+            notification:withdraw()
+         end
+      end, {
+         ["title"] = "Toggle Desk?",
+         ["autoWithdraw"] = true,
+         ["withdrawAfter"] = 300, -- withdraw after 5 minutes
+         ["hasActionButton"] = true,
+         ["actionButtonTitle"] = "Yes"
+      }):send()
+   else
+      log.i("No desk found")
+   end
+end
+
+-- kick off our desk toggling
+local next = nextThirty()
+hs.timer.doAt(next, 0, toggleDesk)
+log.i("Started desk timer: " .. next)
 
 
 
