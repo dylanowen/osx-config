@@ -119,8 +119,9 @@ hs.application.watcher.new(applicationWatcher):start()
 local log = hs.logger.new('uplift', 'info')
 
 function nextThirty()
-   local hour = tonumber(os.date("*t").hour)
-   local min = tonumber(os.date("*t").min)
+   local date = os.date("*t")
+   local hour = tonumber(date.hour)
+   local min = tonumber(date.min)
    if 30 <= min then
       if 23 == hour then
          return "00:00"
@@ -132,42 +133,54 @@ function nextThirty()
    end
 end
 
+deskTimer = nil
 function toggleDesk()
    -- schedule the next move
-   hs.timer.doAt(nextThirty(), 0, toggleDesk)
+   local nextTime = nextThirty()
+   log.i("Scheduling next toggle: " .. nextTime)
 
-   -- check if we can query our desk, otherwise assume it's not nearby
-   local _, deskAvailable, _, _ = hs.execute("uplift --timeout 5 query", true)
-   if deskAvailable then
-      log.i("Asking to toggle desk")
-      hs.notify.new(function (notification)
-         -- check that the user actually clicked Yes
-         if hs.notify.activationTypes[notification:activationType()] == "actionButtonClicked" then
-            hs.alert.show("Toggling Desk")
-            hs.execute("uplift toggle", true)
-         else
-            notification:withdraw()
-         end
-      end, {
-         ["title"] = "Toggle Desk?",
-         ["autoWithdraw"] = true,
-         ["withdrawAfter"] = 300, -- withdraw after 5 minutes
-         ["hasActionButton"] = true,
-         ["actionButtonTitle"] = "Yes"
-      }):send()
+   -- clear out any existing timers
+   if deskTimer ~= nil then
+      deskTimer:stop()
+   end
+   deskTimer = hs.timer.doAt(nextTime, 0, toggleDesk):start()
+
+   -- check that we're plugging into an external monitor
+   local numScreens = #hs.screen.allScreens()
+   if numScreens > 1 then
+
+      local output, deskAvailable, _, _ = hs.execute("uplift --timeout 5 query", true)
+      if deskAvailable then
+
+         log.i("Asking to toggle desk")
+         hs.notify.new(function (notification)
+            -- check that the user actually clicked Yes
+            if hs.notify.activationTypes[notification:activationType()] == "actionButtonClicked" then
+               hs.alert.show("Toggling Desk")
+               hs.execute("uplift force-toggle", true)
+               log.i("Toggled desk")
+            else
+               notification:withdraw()
+            end
+         end, {
+            ["title"] = "Toggle Desk?",
+            ["autoWithdraw"] = true,
+            ["withdrawAfter"] = 300, -- withdraw after 5 minutes
+            ["hasActionButton"] = true,
+            ["actionButtonTitle"] = "Yes"
+         }):send()
+      else
+         log.i("Desk not found: " .. output)
+      end
    else
-      log.i("No desk found")
+      log.i("Not plugged into an external monitor, found: " .. tostring(numScreens))
    end
 end
 
 -- kick off our desk toggling
 local next = nextThirty()
-hs.timer.doAt(next, 0, toggleDesk)
+deskTimer = hs.timer.doAt(next, 0, toggleDesk):start()
 log.i("Started desk timer: " .. next)
-
-
-
-
 
 
 

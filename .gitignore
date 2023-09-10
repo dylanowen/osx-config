@@ -1,0 +1,8 @@
+# Personal Configs
+.DS_Store
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea
