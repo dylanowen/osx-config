@@ -110,7 +110,7 @@ function applicationWatcher(name, event, application)
    end
 end
 
-hs.application.watcher.new(applicationWatcher):start()
+-- hs.application.watcher.new(applicationWatcher):start()
 
 
 
@@ -118,10 +118,15 @@ hs.application.watcher.new(applicationWatcher):start()
 
 local log = hs.logger.new('uplift', 'info')
 
-function nextThirty()
+function nowTime()
    local date = os.date("*t")
    local hour = tonumber(date.hour)
    local min = tonumber(date.min)
+   return hour, min
+end
+
+function nextThirty()
+   local hour, min = nowTime()
    if 30 <= min then
       if 23 == hour then
          return "00:00"
@@ -145,9 +150,10 @@ function toggleDesk()
    end
    deskTimer = hs.timer.doAt(nextTime, 0, toggleDesk):start()
 
-   -- check that we're plugging into an external monitor
+   -- check that the time is correct AND we're plugged into an external monitor
+   local _, min = nowTime()
    local numScreens = #hs.screen.allScreens()
-   if numScreens > 1 then
+   if (min == 0 or min == 30) and numScreens > 1 then
 
       local output, deskAvailable, _, _ = hs.execute("uplift --timeout 5 query", true)
       if deskAvailable then
