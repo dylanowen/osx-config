@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>2E6170DB-779A-4DE3-B516-B38850E08E24</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6DF364FD-ABEE-4E04-8B2A-90795E88F19E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string></string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<true/>
+	<key>name</key>
+	<string>New Sublime Window</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>sublime</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open New Sublime Text Window</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>2E6170DB-779A-4DE3-B516-B38850E08E24</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>property target_process : "Sublime Text"
+
+on is_running()
+   tell application "System Events" to (name of processes) contains target_process
+end is_running
+
+on activate_app()
+   tell application target_process
+      activate
+   end tell
+end activate_app
+
+on alfred_script(q)
+
+   if not is_running() then
+      activate_app()
+   end if
+
+   tell application "System Events"
+      tell process target_process
+         click menu item "New Window" of menu "File" of menu bar 1
+      end tell
+   end tell
+
+   activate_app()
+
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>6DF364FD-ABEE-4E04-8B2A-90795E88F19E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>2E6170DB-779A-4DE3-B516-B38850E08E24</key>
+		<dict>
+			<key>xpos</key>
+			<integer>190</integer>
+			<key>ypos</key>
+			<integer>170</integer>
+		</dict>
+		<key>6DF364FD-ABEE-4E04-8B2A-90795E88F19E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>440</integer>
+			<key>ypos</key>
+			<integer>170</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

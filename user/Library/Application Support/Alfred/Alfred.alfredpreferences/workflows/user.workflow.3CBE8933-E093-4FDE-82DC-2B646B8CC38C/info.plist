@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>connections</key>
+	<dict>
+		<key>0864C183-B3E4-4DC3-8E03-89B9053993A9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9E9DE36D-3568-47C1-AC49-6B4EED7B391E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>7497C666-3613-4CBE-84A5-C97A8B2331CD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4D370C79-6EF4-4E68-94EC-DE9AF20CF461</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CF2CA50C-8396-496E-89FF-D3B3AC5FBE24</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5EFB02D3-2F5D-4E4D-ABE7-CC5084BFDE51</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DF36332D-70D4-4254-9B6D-EE5C115AEDD7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3E0BE55E-3AC6-43D4-931B-440C5C663989</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string></string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>New Windows</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>property target_process : "firefox"
+
+on is_running()
+   tell application "System Events" to (name of processes) contains target_process
+end is_running
+
+on activate_app()
+   tell application target_process
+      activate
+   end tell
+end activate_app
+
+on alfred_script(q)
+
+   if not is_running() then
+      activate_app()
+   end if
+
+   tell application "System Events"
+      tell process target_process
+         click menu item "New Window" of menu "File" of menu bar 1
+      end tell
+   end tell
+
+   -- activate_app()
+
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>3E0BE55E-3AC6-43D4-931B-440C5C663989</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>firefox</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open New Firefox Window</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>DF36332D-70D4-4254-9B6D-EE5C115AEDD7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>property target_process : "iTerm2"
+
+on is_running()
+   tell application "System Events" to (name of processes) contains target_process
+end is_running
+
+on activate_app()
+   tell application target_process
+      activate
+   end tell
+end activate_app
+
+on alfred_script(q)
+
+   if not is_running() then
+      activate_app()
+   end if
+
+   tell application "System Events"
+      tell process target_process
+         click menu item "New Window" of menu "Shell" of menu bar 1
+      end tell
+   end tell
+
+   activate_app()
+
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>5EFB02D3-2F5D-4E4D-ABE7-CC5084BFDE51</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>iterm</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open New iTerm Window</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>CF2CA50C-8396-496E-89FF-D3B3AC5FBE24</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>property target_process : "Sublime Text"
+
+on is_running()
+   tell application "System Events" to (name of processes) contains target_process
+end is_running
+
+on activate_app()
+   tell application target_process
+      activate
+   end tell
+end activate_app
+
+on alfred_script(q)
+
+   if not is_running() then
+      activate_app()
+   end if
+
+   tell application "System Events"
+      tell process target_process
+         click menu item "New Window" of menu "File" of menu bar 1
+      end tell
+   end tell
+
+   -- activate_app()
+
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>9E9DE36D-3568-47C1-AC49-6B4EED7B391E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>sublime</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open New Sublime Text Window</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>0864C183-B3E4-4DC3-8E03-89B9053993A9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>kitty</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open New Kitty Window</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7497C666-3613-4CBE-84A5-C97A8B2331CD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>property target_process : "kitty"on is_running()	tell application "System Events" to (name of processes) contains target_processend is_runningon activate_app()	tell application target_process		activate	end tellend activate_appon alfred_script(q)		if not is_running() then		activate_app()	else		activate_app()		tell application "System Events"			keystroke "n" using command down		end tell	end if	end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>4D370C79-6EF4-4E68-94EC-DE9AF20CF461</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>0864C183-B3E4-4DC3-8E03-89B9053993A9</key>
+		<dict>
+			<key>xpos</key>
+			<real>250</real>
+			<key>ypos</key>
+			<real>430</real>
+		</dict>
+		<key>3E0BE55E-3AC6-43D4-931B-440C5C663989</key>
+		<dict>
+			<key>xpos</key>
+			<real>495</real>
+			<key>ypos</key>
+			<real>125</real>
+		</dict>
+		<key>4D370C79-6EF4-4E68-94EC-DE9AF20CF461</key>
+		<dict>
+			<key>xpos</key>
+			<real>495</real>
+			<key>ypos</key>
+			<real>580</real>
+		</dict>
+		<key>5EFB02D3-2F5D-4E4D-ABE7-CC5084BFDE51</key>
+		<dict>
+			<key>xpos</key>
+			<real>500</real>
+			<key>ypos</key>
+			<real>275</real>
+		</dict>
+		<key>7497C666-3613-4CBE-84A5-C97A8B2331CD</key>
+		<dict>
+			<key>xpos</key>
+			<real>245</real>
+			<key>ypos</key>
+			<real>580</real>
+		</dict>
+		<key>9E9DE36D-3568-47C1-AC49-6B4EED7B391E</key>
+		<dict>
+			<key>xpos</key>
+			<real>500</real>
+			<key>ypos</key>
+			<real>430</real>
+		</dict>
+		<key>CF2CA50C-8396-496E-89FF-D3B3AC5FBE24</key>
+		<dict>
+			<key>xpos</key>
+			<real>250</real>
+			<key>ypos</key>
+			<real>275</real>
+		</dict>
+		<key>DF36332D-70D4-4254-9B6D-EE5C115AEDD7</key>
+		<dict>
+			<key>xpos</key>
+			<real>255</real>
+			<key>ypos</key>
+			<real>125</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
