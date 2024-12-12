@@ -1,8 +1,8 @@
 [user]
-	name = Dylan Owen
-    email = dylan.owen@workday.com
+   name = Dylan Owen
+   email = dylanowen@users.noreply.github.com
 [alias]
-	alias = config --get-regexp alias
+    alias = config --get-regexp alias
     co = checkout
     st = status
     ci = commit
@@ -17,8 +17,10 @@
     remote = remote -v
     # Resets and unstages all the changes since this branch diverged from master
     reset-base = !git reset $(git merge-base master $(git branch --show-current))
+    # Requires https://github.com/newren/git-filter-repo/
+    rewrite-personal-emails = filter-repo --commit-callback 'if commit.author_email in [b\"dylan.owen@workday.com\", b\"dyltotheo@gmail.com\"]:\n   commit.author_email = b\"dylanowen@users.noreply.github.com\"' --partial
 [merge]
-	tool = opendiff
+    tool = opendiff
 [mergetool]
    keepBackup = false
 [core]
@@ -26,15 +28,15 @@
 [interactive]
     diffFilter = delta --color-only
 [pull]
-	rebase = true
+    rebase = true
 [rebase]
-	autoStash = true
+    autoStash = true
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true

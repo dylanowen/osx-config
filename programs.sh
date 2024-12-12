@@ -1,25 +1,35 @@
 #!/usr/bin/env bash
 
+# Rust https://www.rust-lang.org/learn/get-started
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Atuin https://docs.atuin.sh/guide/installation/
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
 brew install \
 	bat \
 	graphviz \
 	openssl@3
+
+brew tap homebrew/cask-fonts
 
 brew install --cask \
 	alfred \
 	cursorsense \
 	contexts \
 	docker \
+	font-fira-code \
+	godot \
 	hammerspoon \
-	kitty \
+	handbrake \
 	hex-fiend \
+	jordanbaird-ice \
 	middleclick \
 	signal \
 	sublime-text \
+	vlc \
+	wezterm \
 	wireshark
-
-brew tap homebrew/cask-fonts
-brew install --cask font-fira-code
 
 cargo install \
 	cargo-audit \
