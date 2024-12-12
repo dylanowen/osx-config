@@ -17,6 +17,8 @@ brew install --cask \
 	alfred \
 	cursorsense \
 	contexts \
+	dbeaver-community \
+	discord \
 	docker \
 	font-fira-code \
 	godot \
@@ -27,6 +29,7 @@ brew install --cask \
 	middleclick \
 	signal \
 	sublime-text \
+	thunderbird \
 	vlc \
 	wezterm \
 	wireshark
