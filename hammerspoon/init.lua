@@ -179,7 +179,7 @@ function toggleDesk()
          log.i("Desk not found: " .. output)
       end
    else
-      log.i("Not plugged into an external monitor, found: " .. tostring(numScreens))
+      log.i("Not plugged into an external monitor, found: " .. tostring(numScreens) .. " at " .. min)
    end
 end
 

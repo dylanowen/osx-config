@@ -33,4 +33,5 @@
     "line_padding_bottom": 3,
     "always_show_minimap_viewport": true,
     "bold_folder_labels": true,
+	"index_files": true,
 }

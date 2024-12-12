@@ -19,6 +19,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>19ECAD79-0B02-4E9A-B760-26A5CD4F8BB9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7F7626BA-B03E-48C1-A97D-670A385878AD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7497C666-3613-4CBE-84A5-C97A8B2331CD</key>
 		<array>
 			<dict>
@@ -291,6 +304,50 @@ end alfred_script</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>wezterm cli spawn --new-window | open /Applications/WezTerm.app</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>7F7626BA-B03E-48C1-A97D-670A385878AD</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>wez</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open New WezTerm Window</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>19ECAD79-0B02-4E9A-B760-26A5CD4F8BB9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -302,6 +359,13 @@ end alfred_script</string>
 			<real>250</real>
 			<key>ypos</key>
 			<real>430</real>
+		</dict>
+		<key>19ECAD79-0B02-4E9A-B760-26A5CD4F8BB9</key>
+		<dict>
+			<key>xpos</key>
+			<real>245</real>
+			<key>ypos</key>
+			<real>730</real>
 		</dict>
 		<key>3E0BE55E-3AC6-43D4-931B-440C5C663989</key>
 		<dict>
@@ -330,6 +394,13 @@ end alfred_script</string>
 			<real>245</real>
 			<key>ypos</key>
 			<real>580</real>
+		</dict>
+		<key>7F7626BA-B03E-48C1-A97D-670A385878AD</key>
+		<dict>
+			<key>xpos</key>
+			<real>500</real>
+			<key>ypos</key>
+			<real>730</real>
 		</dict>
 		<key>9E9DE36D-3568-47C1-AC49-6B4EED7B391E</key>
 		<dict>

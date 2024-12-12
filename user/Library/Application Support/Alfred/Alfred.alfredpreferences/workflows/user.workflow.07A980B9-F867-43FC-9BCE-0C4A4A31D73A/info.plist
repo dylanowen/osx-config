@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>2E6170DB-779A-4DE3-B516-B38850E08E24</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8A55AE5F-A5FC-46F4-96CE-7AEE72763686</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string></string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<true/>
+	<key>name</key>
+	<string>New WezTerm Window</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>wez</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open New WezTerm Window</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>2E6170DB-779A-4DE3-B516-B38850E08E24</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>wezterm start</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.terminalcommand</string>
+			<key>uid</key>
+			<string>8A55AE5F-A5FC-46F4-96CE-7AEE72763686</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>2E6170DB-779A-4DE3-B516-B38850E08E24</key>
+		<dict>
+			<key>xpos</key>
+			<real>70</real>
+			<key>ypos</key>
+			<real>185</real>
+		</dict>
+		<key>8A55AE5F-A5FC-46F4-96CE-7AEE72763686</key>
+		<dict>
+			<key>xpos</key>
+			<real>405</real>
+			<key>ypos</key>
+			<real>240</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
