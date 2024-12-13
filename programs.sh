@@ -11,8 +11,6 @@ brew install \
 	graphviz \
 	openssl@3
 
-brew tap homebrew/cask-fonts
-
 brew install --cask \
 	alfred \
 	cursorsense \

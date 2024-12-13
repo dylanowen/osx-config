@@ -1,7 +1,5 @@
 # . ~/code/osx-config/user/.zprofile
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 export CODE_HOME="${HOME}/code"
 
 # Generic Aliases
