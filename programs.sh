@@ -25,6 +25,7 @@ brew install --cask \
 	hex-fiend \
 	jordanbaird-ice \
 	middleclick \
+	powerlevel10k \
 	signal \
 	sublime-text \
 	thunderbird \
