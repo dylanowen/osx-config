@@ -2,7 +2,7 @@
 
 ```
 cd ~/.hammerspoon
-ln -s ~/code/osx-config/hammerspoon .
+ln -s ~/lab/osx-config/hammerspoon .
 
 ❯ cat ~/.hammerspoon/init.lua
 require('hammerspoon/init')

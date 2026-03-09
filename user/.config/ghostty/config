@@ -1,0 +1,20 @@
+# To import (the config might need to be created)
+# config-file = /Users/dylan.owen/lab/osx-config/user/.config/ghostty/config
+
+# Font
+#font-family = Fira Code
+#font-size = 13.5
+
+# Colors
+#theme = Afterglow
+
+# Window
+window-width = 160
+window-height = 48
+
+# Start in the code folder
+working-directory = ~/code
+
+# Keybindings
+# Clear the scrollback and viewport
+keybind = cmd+k=clear_screen

@@ -27,7 +27,7 @@
 	"update_check": false,
 	// Config for Dark Material Theme
 	"theme": "Dark-Material.sublime-theme",
-  	"color_scheme": "Monokai.sublime-color-scheme",
+  	// "color_scheme": "Monokai.sublime-color-scheme",
   	"overlay_scroll_bars": "enabled",
     "line_padding_top": 3,
     "line_padding_bottom": 3,

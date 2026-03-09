@@ -1,9 +1,8 @@
 #[include]
-#    path = /Users/dylan.owen/code/osx-config/user/.gitconfig
+#    path = /Users/dylan.owen/lab/osx-config/user/.gitconfig
 
 [user]
    name = Dylan Owen
-   email = dylanowen@users.noreply.github.com
 [alias]
     alias = config --get-regexp alias
     co = checkout
@@ -20,16 +19,14 @@
     remote = remote -v
     # Resets and unstages all the changes since this branch diverged from master
     reset-base = !git reset $(git merge-base master $(git branch --show-current))
-    # Requires https://github.com/newren/git-filter-repo/
-    rewrite-personal-emails = filter-repo --commit-callback 'if commit.author_email in [b\"dylan.owen@workday.com\", b\"dyltotheo@gmail.com\"]:\n   commit.author_email = b\"dylanowen@users.noreply.github.com\"' --partial
-[merge]
-    tool = opendiff
+# [merge]
+#     tool = opendiff
 [mergetool]
    keepBackup = false
-[core]
-    pager = "delta"
-[interactive]
-    diffFilter = delta --color-only
+# [core]
+#     pager = "delta"
+# [interactive]
+#     diffFilter = delta --color-only
 [pull]
     rebase = true
 [rebase]
